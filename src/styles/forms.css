@@ -1,0 +1,57 @@
+/* Base form styles */
+@utility form-base {
+  @apply border-greyscale-4 text-greyscale-0 placeholder:!text-greyscale-5 !plabs-body-regular-14 w-full !rounded-lg border py-3;
+
+  &:focus {
+    @apply border-greyscale-0;
+  }
+
+  &:disabled {
+    @apply text-greyscale-5 border-greyscale-4 bg-greyscale-3;
+  }
+
+  &::placeholder {
+    @apply text-greyscale-5;
+  }
+}
+
+@utility form-input {
+  @apply form-base;
+}
+
+@utility form-textarea {
+  @apply form-base;
+}
+
+@utility form-select {
+  @apply form-base;
+}
+
+@utility form-multiselect {
+  @apply form-base;
+}
+
+/* Validation states */
+@utility form-error {
+  border-color: theme(colors.red.base);
+
+  &:focus {
+    border-color: theme(colors.red.base);
+  }
+}
+
+@utility form-success {
+  border-color: theme(colors.green.base);
+
+  &:focus {
+    border-color: theme(colors.green.base);
+  }
+}
+
+@utility form-warning {
+  border-color: theme(colors.yellow.base);
+
+  &:focus {
+    border-color: theme(colors.yellow.base);
+  }
+}
