@@ -44,7 +44,7 @@ export default async function Page() {
       <h1 className='plabs-headline-regular-24'>Analysis</h1>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-3'>
-          <TableSearch placeholder='Search Calculation..' />
+          <TableSearch placeholder='Search Analysis..' />
           <button className='btn-greyscale'>
             <Icons.FilterIcon /> Filter
           </button>

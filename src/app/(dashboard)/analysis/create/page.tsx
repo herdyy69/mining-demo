@@ -13,11 +13,11 @@ export default function Page() {
   const searchParams = useSearchParams()
 
   const menu = [
-    { name: 'Hydraulics', params: 'hydraulics', icon: <Icons.DocumentIcon /> },
-    { name: 'Parametric', params: 'parametric', icon: <Icons.DraftingCompassIcon /> },
-    { name: 'Tripping', params: 'tripping', icon: <Icons.BoxGeoIcon /> },
-    { name: 'Param-Tripping', params: 'param-Tripping', icon: <Icons.BinocularsIcon /> },
-    { name: 'P-V-T', params: 'P-V-T', icon: <Icons.BoxGeo2Icon /> },
+    { name: 'Hydraulics', params: 'hydraulics', icon: <Icons.HydraulicsIcon /> },
+    { name: 'Parametric', params: 'parametric', icon: <Icons.MatrixIcon /> },
+    { name: 'Tripping', params: 'tripping', icon: <Icons.GlobeIcon /> },
+    { name: 'Param-Tripping', params: 'param-Tripping', icon: <Icons.TrippingIcon /> },
+    { name: 'P-V-T', params: 'P-V-T', icon: <Icons.RulerIcon /> },
   ]
 
   return (

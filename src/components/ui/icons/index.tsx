@@ -53,6 +53,11 @@ import DraftingCompassIcon from './icon/draftingCompass'
 import BoxGeo2Icon from './icon/boxGeo2'
 import BoxGeoIcon from './icon/boxGeo'
 import BinocularsIcon from './icon/binoculars'
+import GlobeIcon from './icon/globe'
+import HydraulicsIcon from './icon/hydraulics'
+import MatrixIcon from './icon/matrix'
+import RulerIcon from './icon/ruler'
+import TrippingIcon from './icon/tripping'
 
 const Icons = {
   ArrowLeft,
@@ -107,6 +112,11 @@ const Icons = {
   FileText,
   Download,
   Thermometer,
+  GlobeIcon,
+  HydraulicsIcon,
+  MatrixIcon,
+  RulerIcon,
+  TrippingIcon,
 }
 
 export { Icons }
