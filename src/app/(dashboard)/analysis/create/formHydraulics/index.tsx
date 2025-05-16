@@ -37,7 +37,7 @@ export const FormHydraulics = () => {
   const dataCharts = [
     {
       title: 'Angle Chart',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -45,7 +45,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -54,7 +53,7 @@ export const FormHydraulics = () => {
     },
     {
       title: 'Density Chart',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -62,7 +61,6 @@ export const FormHydraulics = () => {
           borderColor: 'white',
           backgroundColor: 'white',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -73,7 +71,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -82,7 +79,7 @@ export const FormHydraulics = () => {
     },
     {
       title: 'Temperature',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -90,7 +87,6 @@ export const FormHydraulics = () => {
           borderColor: 'white',
           backgroundColor: 'white',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -101,7 +97,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -112,7 +107,6 @@ export const FormHydraulics = () => {
           borderColor: 'lime',
           backgroundColor: 'lime',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -121,7 +115,7 @@ export const FormHydraulics = () => {
     },
     {
       title: 'PV (cp) | YP.LSYP (lbf/100ft2)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -129,7 +123,6 @@ export const FormHydraulics = () => {
           borderColor: 'white',
           backgroundColor: 'white',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -140,7 +133,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -151,7 +143,6 @@ export const FormHydraulics = () => {
           borderColor: 'lime',
           backgroundColor: 'lime',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -160,7 +151,7 @@ export const FormHydraulics = () => {
     },
     {
       title: 'Velocity (ft/min)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -168,7 +159,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -177,7 +167,7 @@ export const FormHydraulics = () => {
     },
     {
       title: 'Concentration (%/vol)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -185,7 +175,6 @@ export const FormHydraulics = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',

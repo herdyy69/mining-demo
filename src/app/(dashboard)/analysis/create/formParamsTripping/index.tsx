@@ -31,7 +31,7 @@ export const FormParamsTripping = () => {
   const dataCharts = [
     {
       title: '',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -39,7 +39,6 @@ export const FormParamsTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',

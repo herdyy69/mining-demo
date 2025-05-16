@@ -44,7 +44,7 @@ export const FormTripping = () => {
   const dataCharts = [
     {
       title: 'Angle Chart',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -52,7 +52,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -61,7 +60,7 @@ export const FormTripping = () => {
     },
     {
       title: 'PV (cp) | YP.LSYP (lbf/100ft2)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -69,7 +68,6 @@ export const FormTripping = () => {
           borderColor: 'white',
           backgroundColor: 'white',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -80,7 +78,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -91,7 +88,6 @@ export const FormTripping = () => {
           borderColor: 'lime',
           backgroundColor: 'lime',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -100,7 +96,7 @@ export const FormTripping = () => {
     },
     {
       title: 'Temperature',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -108,7 +104,6 @@ export const FormTripping = () => {
           borderColor: 'white',
           backgroundColor: 'white',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -119,7 +114,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -130,7 +124,6 @@ export const FormTripping = () => {
           borderColor: 'lime',
           backgroundColor: 'lime',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -139,7 +132,7 @@ export const FormTripping = () => {
     },
     {
       title: 'Pipe Speed',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -147,7 +140,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -156,7 +148,7 @@ export const FormTripping = () => {
     },
     {
       title: 'ESD (ppg)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -164,7 +156,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -173,7 +164,7 @@ export const FormTripping = () => {
     },
     {
       title: 'EMW (ppg)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -181,7 +172,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',
@@ -190,7 +180,7 @@ export const FormTripping = () => {
     },
     {
       title: 'EMW @ bit (ppg)',
-      labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
+      labels: getRandomCurveData(7),
       datasets: [
         {
           label: 'Curve A',
@@ -198,7 +188,6 @@ export const FormTripping = () => {
           borderColor: 'red',
           backgroundColor: 'red',
           borderWidth: 2,
-          tension: 0.4,
           pointRadius: 0,
           xAxisID: 'x',
           yAxisID: 'y',

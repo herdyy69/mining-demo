@@ -19,7 +19,6 @@ type Dataset = {
   borderColor?: string
   backgroundColor?: string
   borderWidth?: number
-  tension?: number
   pointRadius?: number
   xAxisID?: string
   yAxisID?: string
