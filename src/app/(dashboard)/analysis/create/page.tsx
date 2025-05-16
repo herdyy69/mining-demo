@@ -4,18 +4,20 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { FormHydraulics } from './formHydraulics'
+import { FormParametric } from './formParametric'
+import { FormTripping } from './formTripping'
+import { FormParamsTripping } from './formParamsTripping'
+import { FormPvt } from './formPvt'
 
 export default function Page() {
   const searchParams = useSearchParams()
 
   const menu = [
-    { name: 'Description', params: 'description', icon: <Icons.DocumentIcon /> },
-    { name: 'Rig', params: 'rig', icon: <Icons.DraftingCompassIcon /> },
-    { name: 'Formation', params: 'formation', icon: <Icons.BoxGeoIcon /> },
-    { name: 'Survey', params: 'survey', icon: <Icons.BinocularsIcon /> },
-    { name: 'Geometry', params: 'geometry', icon: <Icons.BoxGeo2Icon /> },
-    { name: 'Fluid System', params: 'fluid-System', icon: <Icons.FluidIcon /> },
-    { name: 'Temperature', params: 'temperature', icon: <Icons.Thermometer /> },
+    { name: 'Hydraulics', params: 'hydraulics', icon: <Icons.DocumentIcon /> },
+    { name: 'Parametric', params: 'parametric', icon: <Icons.DraftingCompassIcon /> },
+    { name: 'Tripping', params: 'tripping', icon: <Icons.BoxGeoIcon /> },
+    { name: 'Param-Tripping', params: 'param-Tripping', icon: <Icons.BinocularsIcon /> },
+    { name: 'P-V-T', params: 'P-V-T', icon: <Icons.BoxGeo2Icon /> },
   ]
 
   return (
@@ -24,7 +26,7 @@ export default function Page() {
         {menu.map((item) => (
           <Link
             key={item.name}
-            href={`/calculation/create?tab=${item.params}`}
+            href={`/analysis/create?tab=${item.params}`}
             className={cn(
               'text-greyscale-7 hover:bg-lime hover:text-greyscale-9 flex items-center gap-2 rounded-lg p-4',
               {
@@ -38,7 +40,11 @@ export default function Page() {
         ))}
       </div>
       <div className='col-span-4'>
-        <FormHydraulics />
+        {searchParams.get('tab') === 'hydraulics' && <FormHydraulics />}
+        {searchParams.get('tab') === 'parametric' && <FormParametric />}
+        {searchParams.get('tab') === 'tripping' && <FormTripping />}
+        {searchParams.get('tab') === 'param-Tripping' && <FormParamsTripping />}
+        {searchParams.get('tab') === 'P-V-T' && <FormPvt />}
       </div>
     </div>
   )

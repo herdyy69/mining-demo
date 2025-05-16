@@ -9,36 +9,32 @@ import {
   Legend,
   CategoryScale,
 } from 'chart.js'
+import { cn } from '@/lib/utils'
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale)
 
-const DensityChart = () => {
+type Dataset = {
+  label: string
+  data: number[]
+  borderColor?: string
+  backgroundColor?: string
+  borderWidth?: number
+  tension?: number
+  pointRadius?: number
+  xAxisID?: string
+  yAxisID?: string
+}
+
+type DensityChartProps = {
+  title?: string
+  labels: number[]
+  datasets: Dataset[]
+}
+
+const DensityChart = ({ title = 'Angle', labels, datasets }: DensityChartProps) => {
   const data = {
-    labels: [9.0, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3],
-    datasets: [
-      {
-        label: 'Curve A',
-        data: [5000, 5500, 6000, 6500, 8000, 7500, 8000],
-        borderColor: 'white',
-        backgroundColor: 'white',
-        borderWidth: 2,
-        tension: 0.4,
-        pointRadius: 0,
-        xAxisID: 'x',
-        yAxisID: 'y',
-      },
-      {
-        label: 'Curve B',
-        data: [4000, 3500, 3000, 2500, -200, 1500, 1000],
-        borderColor: 'red',
-        backgroundColor: 'red',
-        borderWidth: 2,
-        tension: 0.4,
-        pointRadius: 0,
-        xAxisID: 'x',
-        yAxisID: 'y',
-      },
-    ],
+    labels,
+    datasets,
   }
 
   const options = {
@@ -70,10 +66,11 @@ const DensityChart = () => {
         display: false,
       },
     },
-  } as any
+  } as const
 
   return (
-    <div className='h-[400px] w-full'>
+    <div className={cn('h-[500px] w-full space-y-4 pl-4', title === '' ? 'pb-4' : 'pb-12')}>
+      <h3 className='plabs-title-medium-20'>{title}</h3>
       <Line data={data} options={options} />
     </div>
   )

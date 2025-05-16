@@ -12,25 +12,21 @@ function getRandomCurveData(length: number) {
   return Array.from({ length }, () => Math.floor(Math.random() * 10000))
 }
 
-export const FormHydraulics = () => {
+export const FormParametric = () => {
   const searchParams = useSearchParams()
   const [simulation, setSimulation] = React.useState<any>(false)
 
   const form = useForm<any>({
     defaultValues: {
-      fluid: '10.3',
-      interval: '8.5',
-      string: 'DS',
-      circ_path: 'Conventional',
-      pump_flowrate: '550',
-      injection_temperature: '80',
-      top_driver_speed: '55',
-      string_depth: '9000',
-      rate_of_penetration: '20',
-      surface_back_pressure: '0',
-      cuttings_shape: 'Cylindrical',
-      cutting_diam: ['0.200', '0.200'],
-      circ_time: '2',
+      experiment: 'Drilling',
+      flowrate: ['100', '550', '5'], // gpm, gpm, Steps
+      rate_of_penetration: ['20', '50', '5'], // ft/hr, ft/hr, Steps
+      rate_of_penetration2: ['20', '50', '5'],
+      top_drive_speed: '55', // rpm
+      string_depth: '10000', // ft
+      cust_report_depth: '10000', // ft
+      annulus_ref_depth: '10000', // ft
+      max_pump_press: '10000', // psi
     },
   })
 
@@ -211,12 +207,219 @@ export const FormHydraulics = () => {
           <div className='space-y-8'>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Fluid</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Experiment</h3>
+              </div>
+              <Form.Select
+                name={`experiment`}
+                placeholder='Experiment'
+                options={[
+                  { value: 'Drilling', label: 'Drilling' },
+                  { value: 'Tripping', label: 'Tripping' },
+                  { value: 'Circulation', label: 'Circulation' },
+                ]}
+                className='w-full'
+              />
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Flowrate</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`flowrate.0`}
+                    placeholder='Flowrate'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`flowrate.0`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>gpm</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`flowrate.1`}
+                    placeholder='Flowrate'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`flowrate.1`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>gpm</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`flowrate.2`}
+                    placeholder='Flowrate'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`flowrate.2`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>Steps</span>
+                </div>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Rate of Penetration</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration.0`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration.0`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft/hr</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration.1`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration.1`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft/hr</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration.2`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration.2`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>Steps</span>
+                </div>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Rate of Penetration</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration2.0`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration2.0`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft/hr</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration2.1`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration2.1`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft/hr</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Form.Input
+                    name={`rate_of_penetration2.2`}
+                    placeholder='Rate of Penetration'
+                    className='w-full'
+                    onChange={(e) => {
+                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+
+                      if ((formattedValue.match(/\./g) || []).length > 1) {
+                        formattedValue = formattedValue.slice(0, -1)
+                      }
+
+                      form.setValue(`rate_of_penetration2.2`, formattedValue, {
+                        shouldValidate: true,
+                      })
+                    }}
+                  />
+                  <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>Steps</span>
+                </div>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Top Drive Speed</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`fluid`}
-                  placeholder='Fluid'
+                  name={`top_drive_speed`}
+                  placeholder='Top Drive Speed'
                   className='w-full'
                   onChange={(e) => {
                     let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
@@ -225,141 +428,12 @@ export const FormHydraulics = () => {
                       formattedValue = formattedValue.slice(0, -1)
                     }
 
-                    form.setValue(`fluid`, formattedValue, {
+                    form.setValue(`top_drive_speed`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>ppg</span>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Interval</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Input
-                  name={`interval`}
-                  placeholder='Interval'
-                  className='w-full'
-                  onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`interval`, formattedValue, {
-                      shouldValidate: true,
-                    })
-                  }}
-                />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>” OH</span>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>String</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Select
-                  name={`string`}
-                  placeholder='String'
-                  options={[
-                    { value: 'DS', label: 'DS' },
-                    { value: 'SS', label: 'SS' },
-                    { value: 'CS', label: 'CS' },
-                  ]}
-                  className='w-full'
-                />
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Circ. Path</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Select
-                  name={`circ_path`}
-                  placeholder='Circ Path'
-                  options={[
-                    { value: 'Conventional', label: 'Conventional' },
-                    { value: 'Non-Conventional', label: 'Non-Conventional' },
-                  ]}
-                  className='w-full'
-                />
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Pump Flowrate</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Input
-                  name={`pump_flowrate`}
-                  placeholder='Pump Flowrate'
-                  className='w-full'
-                  onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`pump_flowrate`, formattedValue, {
-                      shouldValidate: true,
-                    })
-                  }}
-                />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>gpm</span>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Injection Temperature</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Input
-                  name={`injection_temperature`}
-                  placeholder='Injection Temperature'
-                  className='w-full'
-                  onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`injection_temperature`, formattedValue, {
-                      shouldValidate: true,
-                    })
-                  }}
-                />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>°F</span>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Top Driver Speed</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Input
-                  name={`top_driver_speed`}
-                  placeholder='Top Driver Speed'
-                  className='w-full'
-                  onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`top_driver_speed`, formattedValue, {
-                      shouldValidate: true,
-                    })
-                  }}
-                />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>rpm</span>
+                <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>rpm</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
@@ -383,17 +457,17 @@ export const FormHydraulics = () => {
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>ft</span>
+                <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Rate of Penetration</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Cust Report Depth</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`rate_of_penetration`}
-                  placeholder='Rate of Penetration'
+                  name={`cust_report_depth`}
+                  placeholder='Cust Report Depth'
                   className='w-full'
                   onChange={(e) => {
                     let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
@@ -402,22 +476,22 @@ export const FormHydraulics = () => {
                       formattedValue = formattedValue.slice(0, -1)
                     }
 
-                    form.setValue(`rate_of_penetration`, formattedValue, {
+                    form.setValue(`cust_report_depth`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>ft/hr</span>
+                <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Surface Back Pressure</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Annulus Ref Depth</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`surface_back_pressure`}
-                  placeholder='Surface Back Pressure'
+                  name={`annulus_ref_depth`}
+                  placeholder='Annulus Ref Depth'
                   className='w-full'
                   onChange={(e) => {
                     let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
@@ -426,38 +500,22 @@ export const FormHydraulics = () => {
                       formattedValue = formattedValue.slice(0, -1)
                     }
 
-                    form.setValue(`surface_back_pressure`, formattedValue, {
+                    form.setValue(`annulus_ref_depth`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>psi</span>
+                <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>ft</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Cuttings Shape</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Select
-                  name={`cuttings_shape`}
-                  placeholder='Cuttings Shape'
-                  options={[
-                    { value: 'Cylindrical', label: 'Cylindrical' },
-                    { value: 'Spherical', label: 'Spherical' },
-                  ]}
-                  className='w-full'
-                />
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Cuttings Diam. / Thick</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Max Pump Press</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`cutting_diam.0`}
-                  placeholder='Cuttings Diam. / Thick'
+                  name={`max_pump_press`}
+                  placeholder='Max Pump Press'
                   className='w-full'
                   onChange={(e) => {
                     let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
@@ -466,52 +524,12 @@ export const FormHydraulics = () => {
                       formattedValue = formattedValue.slice(0, -1)
                     }
 
-                    form.setValue(`cutting_diam.0`, formattedValue, {
+                    form.setValue(`max_pump_press`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <div className='flex items-center gap-2'>
-                  <Form.Input
-                    name={`cutting_diam.1`}
-                    placeholder='Cuttings Diam. / Thick'
-                    className='w-full'
-                    onChange={(e) => {
-                      let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-                      if ((formattedValue.match(/\./g) || []).length > 1) {
-                        formattedValue = formattedValue.slice(0, -1)
-                      }
-                      form.setValue(`cutting_diam.1`, formattedValue, {
-                        shouldValidate: true,
-                      })
-                    }}
-                  />
-                  <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>in</span>
-                </div>
-              </div>
-            </div>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Circulation Time</h3>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Form.Input
-                  name={`circ_time`}
-                  placeholder='Circ. Time'
-                  className='w-full'
-                  onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`circ_time`, formattedValue, {
-                      shouldValidate: true,
-                    })
-                  }}
-                />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>hr</span>
+                <span className='plabs-title-medium-12 text-greyscale-5 min-w-max'>psi</span>
               </div>
             </div>
           </div>
