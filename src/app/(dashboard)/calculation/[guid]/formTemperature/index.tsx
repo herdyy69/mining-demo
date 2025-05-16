@@ -151,16 +151,6 @@ export const FormTemperature = () => {
             </table>
           </div>
         </div>
-        <div className='flex w-full justify-end gap-2'>
-          <div className='flex gap-2'>
-            <Form.Button onClick={() => router.back()} type='button' className='btn-outline-greyscale text-greyscale-0'>
-              Previous
-            </Form.Button>
-            <Form.Button type='submit' className='btn-lime'>
-              Continue to Analyses
-            </Form.Button>
-          </div>
-        </div>
       </Form>
       <div className='card h-max pb-1 pl-2'>
         <PumpFlowRateChart />

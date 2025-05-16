@@ -89,7 +89,7 @@ export const FormGeometry = () => {
           router.push('/calculation/xx-xxx?tab=fluid-System')
         }}
         onError={(error) => {}}
-        className='card col-span-2 space-y-2'
+        className='card col-span-2 h-max space-y-2'
         key={form.watch('geometry')}
       >
         <h1 className='plabs-headline-regular-24 mb-4'>
@@ -151,17 +151,6 @@ export const FormGeometry = () => {
             <span>Add More Row</span>
             <Icons.Plus className='text-greyscale-0 h-4 w-4' />
           </button>
-        </div>
-
-        <div className='flex w-full justify-end gap-2'>
-          <div className='flex gap-2'>
-            <Form.Button onClick={() => router.back()} type='button' className='btn-outline-greyscale text-greyscale-0'>
-              Previous
-            </Form.Button>
-            <Form.Button type='submit' className='btn-lime'>
-              Next
-            </Form.Button>
-          </div>
         </div>
       </Form>
       <div className='space-y-4'>

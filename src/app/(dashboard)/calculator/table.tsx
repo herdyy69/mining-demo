@@ -1,9 +1,7 @@
 'use client'
-import Cell from '@/components/ui/table/cells'
+
 import DataTable from '@/components/ui/table/dataTable'
-import React, { useEffect } from 'react'
-import { useTableRowsSelection } from '@/hooks/useTableRowsSelection'
-import { RowSelectionState } from '@tanstack/react-table'
+import React, { useEffect, useState } from 'react'
 
 export const TableAnalysis = ({
   data,
@@ -14,36 +12,34 @@ export const TableAnalysis = ({
   value: any[]
   setValue: React.Dispatch<React.SetStateAction<any[]>>
 }) => {
-  const { selectedRows, onRowSelectionChange, onAllRowsSelectionChange } = useTableRowsSelection<RowSelectionState>()
+  const [selectedRowId, setSelectedRowId] = useState<string | null>(null)
 
   useEffect(() => {
-    const selectedData = data.data.filter((item: any) => selectedRows.includes(item.guid))
-    setValue(selectedData)
-  }, [selectedRows])
+    if (selectedRowId) {
+      const selectedData = data.data.filter((item: any) => item.percent === selectedRowId)
+      setValue(selectedData)
+    } else {
+      setValue([])
+    }
+  }, [selectedRowId])
+
+  const handleSelectionChange = (row: any) => () => {
+    const rowId = row.original.percent
+    setSelectedRowId((prev) => (prev === rowId ? null : rowId))
+  }
 
   const columns = [
     {
       id: 'select',
-      header: ({ table }: { table: any }) => {
-        return (
-          <Cell.Checkbox
-            {...{
-              checked: table.getIsAllRowsSelected(),
-              indeterminate: table.getIsSomeRowsSelected(),
-              onChange: onAllRowsSelectionChange(table),
-            }}
-          />
-        )
-      },
+      header: () => null,
       cell: ({ row }: any) => (
         <div className='px-1'>
-          <Cell.Checkbox
-            {...{
-              checked: row.getIsSelected(),
-              disabled: !row.getCanSelect(),
-              indeterminate: row.getIsSomeSelected(),
-              onChange: onRowSelectionChange(row),
-            }}
+          <input
+            type='radio'
+            name='row-select'
+            className='form-radio h-4 w-4 text-blue-600'
+            checked={row.original.percent === selectedRowId}
+            onChange={handleSelectionChange(row)}
           />
         </div>
       ),

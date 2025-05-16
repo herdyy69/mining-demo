@@ -11,7 +11,7 @@ export function useMenu() {
 
 export const MenuProvider = ({ children }: { children: React.ReactNode }) => {
   const [activeCollapseRoute, setActiveCollapseRoute] = useState<Route | null>()
-  const [isSidebarCollapse, setIsSidebarCollapse] = useState<boolean>(false)
+  const [isSidebarCollapse, setIsSidebarCollapse] = useState<boolean>(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   const handleCollapseRoute = (route: Route) => {

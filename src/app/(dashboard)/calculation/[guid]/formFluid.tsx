@@ -303,22 +303,6 @@ export const FormFluid = () => {
             </div>
           </div>
         </div>
-        <div className='flex w-full justify-end gap-2'>
-          <div className='flex gap-2'>
-            <Form.Button onClick={() => router.back()} type='button' className='btn-outline-greyscale text-greyscale-0'>
-              Previous
-            </Form.Button>
-            <Form.Button
-              type='submit'
-              className='btn-lime'
-              onClick={() => {
-                router.push('/calculation/xx-xxx?tab=temperature')
-              }}
-            >
-              Next
-            </Form.Button>
-          </div>
-        </div>
       </Form>
       <div className='space-y-4'>
         <div className='card h-max'>

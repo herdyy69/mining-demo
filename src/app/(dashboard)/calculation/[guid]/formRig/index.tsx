@@ -81,7 +81,7 @@ export const FormRig = () => {
           router.push('/calculation/xx-xxx?tab=formation')
         }}
         onError={(error) => {}}
-        className='card col-span-2 space-y-2'
+        className='card col-span-2 h-max space-y-2'
       >
         <h1 className='plabs-headline-regular-24 mb-4'>
           {searchParams.get('tab')
@@ -420,16 +420,6 @@ export const FormRig = () => {
                 </table>
               )}
             </div>
-          </div>
-        </div>
-        <div className='flex w-full justify-end gap-2'>
-          <div className='flex gap-2'>
-            <Form.Button onClick={() => router.back()} type='button' className='btn-outline-greyscale text-greyscale-0'>
-              Previous
-            </Form.Button>
-            <Form.Button type='submit' className='btn-lime'>
-              Next
-            </Form.Button>
           </div>
         </div>
       </Form>

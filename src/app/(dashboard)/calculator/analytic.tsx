@@ -9,7 +9,7 @@ function getRandomCurveData(length: number) {
   return Array.from({ length }, () => Math.floor(Math.random() * 1000))
 }
 
-export const PumpFlowRateChart = () => {
+export const PumpFlowRateChart = ({ value }: { value: any }) => {
   const series = [
     {
       name: 'Line A',

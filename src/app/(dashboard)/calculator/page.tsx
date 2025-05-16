@@ -47,7 +47,7 @@ export default function Page() {
         <TableAnalysis data={data} value={value} setValue={setValue} />
       </div>
       <div className='card h-max pb-1 pl-2'>
-        <PumpFlowRateChart />
+        <PumpFlowRateChart value={value} />
       </div>
     </div>
   )
