@@ -1,5 +1,7 @@
+'use client'
 import { TableAnalysis } from './table'
 import { PumpFlowRateChart } from './analytic'
+import React from 'react'
 
 function generateDummyData() {
   const product = ['Hydraulics', 'Parametric', 'Tripping', 'Param-Tripping', 'P-V-T']
@@ -21,8 +23,13 @@ function generateDummyData() {
   }
 }
 
-export default async function Page() {
-  const loadedDataList = Array.from({ length: 10 }, () => generateDummyData())
+export default function Page() {
+  const [value, setValue] = React.useState<any[]>([])
+  const [loadedDataList, setLoadedDataList] = React.useState<any[]>([])
+
+  React.useEffect(() => {
+    setLoadedDataList(Array.from({ length: 10 }, () => generateDummyData()))
+  }, [])
 
   const data = {
     data: loadedDataList,
@@ -37,7 +44,7 @@ export default async function Page() {
   return (
     <div className='grid grid-cols-3 gap-4'>
       <div className='card col-span-2 space-y-6'>
-        <TableAnalysis data={data} />
+        <TableAnalysis data={data} value={value} setValue={setValue} />
       </div>
       <div className='card h-max pb-1 pl-2'>
         <PumpFlowRateChart />

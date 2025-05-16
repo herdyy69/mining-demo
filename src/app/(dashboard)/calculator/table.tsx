@@ -1,12 +1,25 @@
 'use client'
 import Cell from '@/components/ui/table/cells'
 import DataTable from '@/components/ui/table/dataTable'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTableRowsSelection } from '@/hooks/useTableRowsSelection'
 import { RowSelectionState } from '@tanstack/react-table'
 
-export const TableAnalysis = ({ data }: { data: any }) => {
+export const TableAnalysis = ({
+  data,
+  value,
+  setValue,
+}: {
+  data: any
+  value: any[]
+  setValue: React.Dispatch<React.SetStateAction<any[]>>
+}) => {
   const { selectedRows, onRowSelectionChange, onAllRowsSelectionChange } = useTableRowsSelection<RowSelectionState>()
+
+  useEffect(() => {
+    const selectedData = data.data.filter((item: any) => selectedRows.includes(item.guid))
+    setValue(selectedData)
+  }, [selectedRows])
 
   const columns = [
     {
