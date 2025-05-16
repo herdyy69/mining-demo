@@ -18,26 +18,26 @@ export const FormTripping = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      fluid: '10.3', // ppg
-      interval: '8.5', // OH
-      string: 'DS',
-      pipe_speed: ['100', '1'],
-      acceleration_time: '0', // sec
-      connection_time: '0', // min
-      pump_flowrate: ['0', '0'],
-      injection_temperature: '80', // °F
-      start_end_depth: ['0', '0'], // ft
-      safety_margin: '0.1', // ppg
-      pipe_end_condition: 'Close - Ended',
+      fluid: '', // ppg
+      interval: '', // OH
+      string: '',
+      pipe_speed: ['', ''],
+      acceleration_time: '', // sec
+      connection_time: '', // min
+      pump_flowrate: ['', ''],
+      injection_temperature: '', // °F
+      start_end_depth: ['', ''], // ft
+      safety_margin: '', // ppg
+      pipe_end_condition: '',
 
-      casing_shoe: '7500', // ft
-      total_depth: '10000', // ft
-      max_speed: '100', // ft/min
-      pump: '0', // gpm
-      mud_weight: ['10.2', '70'], // ppg, °F
-      pv: '30', // cp
-      yp: '0', // lbf/100ft2
-      lsyp: '0', // lbf/100ft2
+      casing_shoe: '', // ft
+      total_depth: '', // ft
+      max_speed: '', // ft/min
+      pump: '', // gpm
+      mud_weight: ['', ''], // ppg, °F
+      pv: '', // cp
+      yp: '', // lbf/100ft2
+      lsyp: '', // lbf/100ft2
     },
   })
 

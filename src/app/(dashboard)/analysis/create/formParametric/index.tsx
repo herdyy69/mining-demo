@@ -18,15 +18,15 @@ export const FormParametric = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      experiment: 'Drilling',
-      flowrate: ['100', '550', '5'], // gpm, gpm, Steps
-      rate_of_penetration: ['20', '50', '5'], // ft/hr, ft/hr, Steps
-      rate_of_penetration2: ['20', '50', '5'],
-      top_drive_speed: '55', // rpm
-      string_depth: '10000', // ft
-      cust_report_depth: '10000', // ft
-      annulus_ref_depth: '10000', // ft
-      max_pump_press: '10000', // psi
+      experiment: '',
+      flowrate: ['', '', ''], // gpm, gpm, Steps
+      rate_of_penetration: ['', '', ''], // ft/hr, ft/hr, Steps
+      rate_of_penetration2: ['', '', ''],
+      top_drive_speed: '', // rpm
+      string_depth: '', // ft
+      cust_report_depth: '', // ft
+      annulus_ref_depth: '', // ft
+      max_pump_press: '', // psi
     },
   })
 

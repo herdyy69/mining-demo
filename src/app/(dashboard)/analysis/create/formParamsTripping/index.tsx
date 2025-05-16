@@ -18,13 +18,13 @@ export const FormParamsTripping = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      fluid: '10.3', // ppg
-      interval: '8.5', // OH
-      acceleration_time: '0', // sec
-      connection_time: '0', // min
-      injection_temperature: '80', // °F
-      start_end_depth: ['0', '0'], // ft
-      pipe_end_condition: 'Close - Ended',
+      fluid: '', // ppg
+      interval: '', // OH
+      acceleration_time: '', // sec
+      connection_time: '', // min
+      injection_temperature: '', // °F
+      start_end_depth: ['', ''], // ft
+      pipe_end_condition: '',
     },
   })
 

@@ -18,22 +18,22 @@ export const FormPvt = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      fluid: '10.3', // ppg
-      interval: '8.5', // OH
-      string: 'DS',
-      options: 'FIT',
-      packer_depth: '0', // ft
-      max_injection_pressure: '0', // psi
-      ramp_up_press_step: '0', // psi
-      mud_weight: ['10.2', '70'], // ppg, °F
-      pv: '30', // cp
-      yp: '0', // lbf/100ft2
-      lsyp: '0', // lbf/100ft2
-      md: '0', // ft
-      tvd: '0', // ft
-      casing_shoe: '0', // ft
-      max_injection_pressure2: '0', // psi
-      injection_pressure_step: '0', // psi
+      fluid: '', // ppg
+      interval: '', // OH
+      string: '',
+      options: '',
+      packer_depth: '', // ft
+      max_injection_pressure: '', // psi
+      ramp_up_press_step: '', // psi
+      mud_weight: ['', ''], // ppg, °F
+      pv: '', // cp
+      yp: '', // lbf/100ft2
+      lsyp: '', // lbf/100ft2
+      md: '', // ft
+      tvd: '', // ft
+      casing_shoe: '', // ft
+      max_injection_pressure2: '', // psi
+      injection_pressure_step: '', // psi
     },
   })
 

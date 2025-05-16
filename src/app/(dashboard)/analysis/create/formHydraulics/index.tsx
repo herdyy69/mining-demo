@@ -18,19 +18,19 @@ export const FormHydraulics = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      fluid: '10.3',
-      interval: '8.5',
-      string: 'DS',
-      circ_path: 'Conventional',
-      pump_flowrate: '550',
-      injection_temperature: '80',
-      top_driver_speed: '55',
-      string_depth: '9000',
-      rate_of_penetration: '20',
-      surface_back_pressure: '0',
-      cuttings_shape: 'Cylindrical',
-      cutting_diam: ['0.200', '0.200'],
-      circ_time: '2',
+      fluid: '',
+      interval: '',
+      string: '',
+      circ_path: '',
+      pump_flowrate: '',
+      injection_temperature: '',
+      top_driver_speed: '',
+      string_depth: '',
+      rate_of_penetration: '',
+      surface_back_pressure: '',
+      cuttings_shape: '',
+      cutting_diam: ['', ''],
+      circ_time: '',
     },
   })
 
