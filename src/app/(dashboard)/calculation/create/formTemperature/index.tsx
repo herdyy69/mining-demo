@@ -13,14 +13,12 @@ export const FormTemperature = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      type: 'Dynamic Model Initialized from Formation' as
-        | 'Dynamic Model Initialized from Formation'
-        | 'Dynamic Model Initialized from Survey',
-      include_effect_of_information_temperature: true,
+      type: '' as 'Dynamic Model Initialized from Formation' | 'Dynamic Model Initialized from Survey',
+      include_effect_of_information_temperature: false,
       table: [
         {
-          md: 0,
-          temperature: 40,
+          md: '',
+          temperature: '',
         },
       ],
     },

@@ -23,7 +23,7 @@ export const FormFormation = () => {
           shmin: '',
         },
       ],
-      name: 'Shale' as 'Shale' | 'Sandstone' | 'Limestone' | 'Dolomite',
+      name: '' as 'Shale' | 'Sandstone' | 'Limestone' | 'Dolomite',
       density: '',
       specific_heat_capacity: '',
       thermal_conductivity: '',

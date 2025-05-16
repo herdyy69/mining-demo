@@ -37,30 +37,30 @@ export const FormGeometry = () => {
     defaultValues: {
       geometry: [
         {
-          name: '8.5” OH' as '8.5” OH' | 'DS',
-          title: 'Wellbores',
+          name: '' as '8.5” OH' | 'DS',
+          title: '',
           table: [
             {
-              description: '21.500” Casing',
-              top: '0',
-              bottom: '1500',
-              hole: '23.500',
-              od: '21.500',
-              id: '20.710',
+              description: '',
+              top: '',
+              bottom: '',
+              hole: '',
+              od: '',
+              id: '',
             },
           ],
         },
         {
-          name: 'DS' as '8.5” OH' | 'DS',
-          title: 'Strings',
+          name: '' as '8.5” OH' | 'DS',
+          title: '',
           table: [
             {
-              description: '21.500” Casing',
-              top: '0',
-              bottom: '1500',
-              hole: '23.500',
-              od: '21.500',
-              id: '20.710',
+              description: '',
+              top: '',
+              bottom: '',
+              hole: '',
+              od: '',
+              id: '',
             },
           ],
         },

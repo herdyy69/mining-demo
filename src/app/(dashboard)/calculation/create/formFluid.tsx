@@ -42,22 +42,22 @@ export const FormFluid = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      type: 'NAF' as 'NAF' | 'WBF',
+      type: '' as 'NAF' | 'WBF',
       mud_weight: {
-        unit: 'OWR' as 'OWR' | 'SG',
-        ppg: '10.2',
-        fahrenheit: '70',
+        unit: '' as 'OWR' | 'SG',
+        ppg: '',
+        fahrenheit: '',
       },
-      volume: '58.000',
-      solid: '58.000',
-      salinity: '0.000',
-      hpht_model: 'HPHT' as 'HPHT' | 'N/A',
+      volume: '',
+      solid: '',
+      salinity: '',
+      hpht_model: '' as 'HPHT' | 'N/A',
       rheology_model: {
-        model: 'Herschel-Bulkley' as 'Herschel-Bulkley' | 'Bingham Plastic',
-        fahrenheit: '150',
+        model: '' as 'Herschel-Bulkley' | 'Bingham Plastic',
+        fahrenheit: '',
       },
-      base: 'ID 1618' as 'ID 1618' | 'ID 1619',
-      brine: 'CaCl2 - Calcium Chloride' as 'CaCl2 - Calcium Chloride' | 'NaCl - Sodium Chloride',
+      base: '' as 'ID 1618' | 'ID 1619',
+      brine: '' as 'CaCl2 - Calcium Chloride' | 'NaCl - Sodium Chloride',
     },
   })
 
