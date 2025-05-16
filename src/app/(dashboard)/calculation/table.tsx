@@ -1,6 +1,5 @@
 'use client'
 import { toast } from '@/components/ui/alert/toast'
-import { DeleteConfirmation } from '@/components/ui/dialog/deleteConfirmation'
 import Cell from '@/components/ui/table/cells'
 import DataTable from '@/components/ui/table/dataTable'
 import { useRouter } from 'next/navigation'
@@ -68,15 +67,7 @@ export const TableAnalysis = ({ data }: { data: any }) => {
       cell: ({ row }: any) => (
         <div className='flex justify-end gap-2'>
           <Cell.Action>
-            <Cell.Action.Item text='Edit' iconType='edit' href={`/people/${row.original.guid}`} disable />
-            <DeleteConfirmation
-              trigger={<Cell.Action.Item text='Hapus' iconType='delete' disable />}
-              title='Hapus Orang'
-              description='Apakah Anda yakin ingin menghapus orang ini?'
-              onConfirm={() => {
-                onDelete(row.original.guid)
-              }}
-            />
+            <Cell.Action.Item text='Detail' iconType='view' href={`/calculation/xx-xxx-1`} />
           </Cell.Action>
         </div>
       ),
