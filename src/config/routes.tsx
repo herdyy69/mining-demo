@@ -26,7 +26,7 @@ export const routes: Route[] = [
   {
     id: 3,
     link: '/calculator',
-    mainPath: '/calculator',
+    mainPath: 'calculator',
     title: 'Calculator',
     icon: <Icons.FileText />,
     isCollapse: false,

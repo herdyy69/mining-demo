@@ -71,13 +71,14 @@ export const FormTemperature = () => {
                 ]}
                 placeholder='Select Table Name'
                 className='w-full'
+                disabled
               />
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
                 <h3 className='plabs-title-medium-16 text-greyscale-0'>Include Effect of Formation Temp</h3>
               </div>
-              <Form.Switch name={`include_effect_of_information_temperature`} className='w-full' />
+              <Form.Switch name={`include_effect_of_information_temperature`} className='w-full' disabled />
             </div>
             <table className='w-full overflow-hidden rounded-t-2xl'>
               <thead className='bg-greyscale-10'>
@@ -102,6 +103,7 @@ export const FormTemperature = () => {
                             shouldValidate: true,
                           })
                         }}
+                        disabled
                       />
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
@@ -116,6 +118,7 @@ export const FormTemperature = () => {
                             shouldValidate: true,
                           })
                         }}
+                        disabled
                       />
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>

@@ -67,7 +67,7 @@ export const TableAnalysis = ({ data }: { data: any }) => {
       cell: ({ row }: any) => (
         <div className='flex justify-end gap-2'>
           <Cell.Action>
-            <Cell.Action.Item text='Detail' iconType='view' href={`/calculation/xx-xxx-1`} />
+            <Cell.Action.Item text='Detail' iconType='view' href={`/calculation/xx-xxx-1?tab=description`} />
           </Cell.Action>
         </div>
       ),
