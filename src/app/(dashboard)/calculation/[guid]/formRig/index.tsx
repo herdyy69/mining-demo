@@ -425,13 +425,10 @@ export const FormRig = () => {
       </Form>
       <div className='space-y-4'>
         <div className='card'>
-          <Image
-            src={`/612f2da966232602cad97e749b8fabd613b76e94.png`}
-            alt='calculation'
-            width={500}
-            height={500}
-            className='w-full'
-          />
+          <video width={500} height={500} className='w-full' autoPlay muted playsInline>
+            <source src='/20250603-131525.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div className='card disabled pb-1 pl-2'>
           <PumpFlowRateChart />
