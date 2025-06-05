@@ -48,7 +48,7 @@ const Dashboard = ({ children }: { children: any }) => {
                 <div className='plabs-caption-regular-14 card flex items-center gap-[6px]'>
                   <div className='text-greyscale-0 flex items-center gap-[6px]'>
                     <Icons.HomeIcon className='size-[16px]' />
-                    <p>Dashbord</p>
+                    <p>Dashboard</p>
                   </div>
                   {breadcrumb.map((item, index) => (
                     <div key={index} className='flex items-center gap-[6px]'>
