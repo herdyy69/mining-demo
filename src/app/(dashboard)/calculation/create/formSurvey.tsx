@@ -139,7 +139,7 @@ export const FormSurvey = () => {
       <Form
         form={form}
         onSave={() => {
-          router.push('/calculation/create?tab=geometry')
+          router.push('/calculation/create?tab=pump-data')
         }}
         onError={(error) => {}}
         className='card h-max space-y-2'

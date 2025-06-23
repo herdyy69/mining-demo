@@ -86,7 +86,7 @@ export const FormGeometry = () => {
       <Form
         form={form}
         onSave={() => {
-          router.push('/calculation/create?tab=fluid-System')
+          router.push('/calculation/create?tab=breakdown')
         }}
         onError={(error) => {}}
         className='card col-span-2 space-y-2'

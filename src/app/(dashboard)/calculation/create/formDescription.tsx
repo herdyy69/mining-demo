@@ -26,7 +26,7 @@ export const FormDescription = () => {
     <Form
       form={form}
       onSave={() => {
-        router.push('/calculation/create?tab=rig')
+        router.push('/calculation/create?tab=input')
       }}
       onError={(error) => {}}
       className='card space-y-2'

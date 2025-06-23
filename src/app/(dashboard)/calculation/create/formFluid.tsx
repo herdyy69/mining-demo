@@ -300,7 +300,7 @@ export const FormFluid = () => {
               type='submit'
               className='btn-lime'
               onClick={() => {
-                router.push('/calculation/create?tab=temperature')
+                router.push('/calculation/create?tab=grafik')
               }}
             >
               Next
