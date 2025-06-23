@@ -13,20 +13,30 @@ export const FormFormation = () => {
 
   const form = useForm<any>({
     defaultValues: {
-      formation_tops: 'MD' as 'MD' | 'TVD' | 'TVDSS',
+      bit_tfa: 0.77,
       table: [
-        {
-          md: '',
-          temperature: '',
-          ppg: '',
-          fpg: '',
-          shmin: '',
-        },
+        { deskripsi: 'Bit', od: 6, id: 3.5, length: 1.08, cumm_length: 1.08, act_length: 1.08 },
+        { deskripsi: 'Terraforce', od: 7, id: 4.952, length: 27.38, cumm_length: 28.46, act_length: 27.38 },
+        { deskripsi: '7-3/4" Stab', od: 5.5, id: 2.813, length: 5, cumm_length: 33.46, act_length: 5 },
+        { deskripsi: '6-1/2" Float', od: 6.5, id: 2.875, length: 2.07, cumm_length: 35.53, act_length: 2.07 },
+        { deskripsi: '6-3/4" Collar', od: 6.75, id: 3.125, length: 9.2, cumm_length: 44.73, act_length: 9.2 },
+        { deskripsi: '6-3/4" PWD', od: 6.75, id: 1.905, length: 4.44, cumm_length: 49.17, act_length: 4.44 },
+        { deskripsi: '6-3/4" HOC', od: 6.75, id: 3, length: 9.59, cumm_length: 58.76, act_length: 9.59 },
+        { deskripsi: '9x5" HWDP', od: 5, id: 3, length: 270, cumm_length: 328.76, act_length: 270 },
+        { deskripsi: '6-1/2" Jar', od: 6.5, id: 2.75, length: 21.67, cumm_length: 350.43, act_length: 21.67 },
+        { deskripsi: '40x5" HWDP', od: 5, id: 3, length: 1200, cumm_length: 1550.43, act_length: 1200 },
+        { deskripsi: '5" DP', od: 5, id: 4.276, length: 3000, cumm_length: 3000, act_length: 1449.57 },
       ],
-      name: '' as 'Shale' | 'Sandstone' | 'Limestone' | 'Dolomite',
-      density: '',
-      specific_heat_capacity: '',
-      thermal_conductivity: '',
+      mw: 9.3,
+      flow_rate: 400,
+      pressure: 320,
+      cutting_dia: 0.25,
+      sg_cutting: 2.6,
+      rop_ft_hr: 90,
+      new_pressure_drop: 257.81,
+      pressure_drop_at_bit: 162.04,
+      cutting_prod: 6.317,
+      ann_mw: 0.156129,
     },
   })
 
@@ -62,27 +72,19 @@ export const FormFormation = () => {
           <div className='space-y-8'>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Formation Tops</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Bit TFA</h3>
               </div>
-              <Form.Select
-                name={`formation_tops`}
-                options={[
-                  { label: 'MD', value: 'MD' },
-                  { label: 'TVD', value: 'TVD' },
-                  { label: 'TVDSS', value: 'TVDSS' },
-                ]}
-                placeholder='Select Formation Tops'
-                className='w-full'
-              />
+              <Form.Input name={`bit_tfa`} placeholder='Bit TFA' className='w-full' />
             </div>
             <table className='overflow-hidden rounded-t-2xl'>
               <thead className='bg-greyscale-10'>
                 <tr>
-                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>MD (ft)</th>
-                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>Temperature (°F)</th>
-                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>PPG (ppg)</th>
-                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>FPG (ppg)</th>
-                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>ShMin (ppg)</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>Deskripsi</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>OD</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>ID</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>Length</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>Cumm. Length</th>
+                  <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'>Act Length</th>
                   <th className='plabs-title-medium-12 text-greyscale-0 px-2 py-4'></th>
                 </tr>
               </thead>
@@ -91,13 +93,24 @@ export const FormFormation = () => {
                   <tr key={field.id} className={index % 2 === 0 ? 'bg-greyscale-7' : 'bg-greyscale-8'}>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
                       <Form.Input
-                        name={`table.${index}.md`}
-                        placeholder='MD'
+                        name={`table.${index}.deskripsi`}
+                        placeholder='Deskripsi'
                         className='w-full'
+                        disabled
+                      />
+                    </td>
+                    <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
+                      <Form.Input
+                        name={`table.${index}.od`}
+                        placeholder='OD'
+                        className='w-full'
+                        disabled
                         onChange={(e) => {
-                          let formattedValue = e.target.value.replace(/\D/g, '')
-
-                          form.setValue(`table.${index}.md`, formattedValue, {
+                          let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                          if ((formattedValue.match(/\./g) || []).length > 1) {
+                            formattedValue = formattedValue.slice(0, -1)
+                          }
+                          form.setValue(`table.${index}.od`, formattedValue, {
                             shouldValidate: true,
                           })
                         }}
@@ -105,13 +118,16 @@ export const FormFormation = () => {
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
                       <Form.Input
-                        name={`table.${index}.temperature`}
-                        placeholder='Temperature'
+                        name={`table.${index}.id`}
+                        placeholder='ID'
                         className='w-full'
+                        disabled
                         onChange={(e) => {
-                          let formattedValue = e.target.value.replace(/\D/g, '')
-
-                          form.setValue(`table.${index}.temperature`, formattedValue, {
+                          let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                          if ((formattedValue.match(/\./g) || []).length > 1) {
+                            formattedValue = formattedValue.slice(0, -1)
+                          }
+                          form.setValue(`table.${index}.id`, formattedValue, {
                             shouldValidate: true,
                           })
                         }}
@@ -119,13 +135,16 @@ export const FormFormation = () => {
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
                       <Form.Input
-                        name={`table.${index}.ppg`}
-                        placeholder='PPG'
+                        name={`table.${index}.length`}
+                        placeholder='Length'
                         className='w-full'
+                        disabled
                         onChange={(e) => {
-                          let formattedValue = e.target.value.replace(/\D/g, '')
-
-                          form.setValue(`table.${index}.ppg`, formattedValue, {
+                          let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                          if ((formattedValue.match(/\./g) || []).length > 1) {
+                            formattedValue = formattedValue.slice(0, -1)
+                          }
+                          form.setValue(`table.${index}.length`, formattedValue, {
                             shouldValidate: true,
                           })
                         }}
@@ -133,13 +152,15 @@ export const FormFormation = () => {
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
                       <Form.Input
-                        name={`table.${index}.fpg`}
-                        placeholder='FPG'
+                        name={`table.${index}.cumm_length`}
+                        placeholder='Cumm. Length'
                         className='w-full'
                         onChange={(e) => {
-                          let formattedValue = e.target.value.replace(/\D/g, '')
-
-                          form.setValue(`table.${index}.fpg`, formattedValue, {
+                          let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                          if ((formattedValue.match(/\./g) || []).length > 1) {
+                            formattedValue = formattedValue.slice(0, -1)
+                          }
+                          form.setValue(`table.${index}.cumm_length`, formattedValue, {
                             shouldValidate: true,
                           })
                         }}
@@ -147,13 +168,15 @@ export const FormFormation = () => {
                     </td>
                     <td className='plabs-caption-regular-12 text-greyscale-7 px-3 py-4 text-sm'>
                       <Form.Input
-                        name={`table.${index}.shmin`}
-                        placeholder='ShMin'
+                        name={`table.${index}.act_length`}
+                        placeholder='Act Length'
                         className='w-full'
                         onChange={(e) => {
-                          let formattedValue = e.target.value.replace(/\D/g, '')
-
-                          form.setValue(`table.${index}.shmin`, formattedValue, {
+                          let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                          if ((formattedValue.match(/\./g) || []).length > 1) {
+                            formattedValue = formattedValue.slice(0, -1)
+                          }
+                          form.setValue(`table.${index}.act_length`, formattedValue, {
                             shouldValidate: true,
                           })
                         }}
@@ -173,11 +196,12 @@ export const FormFormation = () => {
                     <button
                       onClick={() =>
                         append({
-                          md: '',
-                          temperature: '',
-                          ppg: '',
-                          fpg: '',
-                          shmin: '',
+                          deskripsi: '',
+                          od: '',
+                          id: '',
+                          length: '',
+                          cumm_length: '',
+                          act_length: '',
                         })
                       }
                       type='button'
@@ -190,92 +214,210 @@ export const FormFormation = () => {
                 </tr>
               </tbody>
             </table>
-            <div className='grid grid-cols-2 items-center'>
-              <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Formation Properties</h3>
-              </div>
-              <Form.Select
-                name={`name`}
-                options={[
-                  { label: 'Shale', value: 'Shale' },
-                  { label: 'Sandstone', value: 'Sandstone' },
-                  { label: 'Limestone', value: 'Limestone' },
-                  { label: 'Dolomite', value: 'Dolomite' },
-                ]}
-                placeholder='Select Formation Properties'
-                className='w-full'
-              />
+            <div className='flex flex-col justify-center'>
+              <h3 className='plabs-title-medium-16 text-greyscale-0'>LWD/MWD Pressure drop data</h3>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Density</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>MW</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`density`}
-                  placeholder='Density'
+                  name={`mw`}
+                  placeholder='MW'
                   className='w-full'
                   onChange={(e) => {
                     let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
                     if ((formattedValue.match(/\./g) || []).length > 1) {
                       formattedValue = formattedValue.slice(0, -1)
                     }
-
-                    form.setValue(`density`, formattedValue, {
+                    form.setValue(`mw`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>g/cc</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Specific Heat Capacity</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Flow Rate</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`specific_heat_capacity`}
-                  placeholder='Specific Heat Capacity'
+                  name={`flow_rate`}
+                  placeholder='Flow Rate'
                   className='w-full'
                   onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`specific_heat_capacity`, formattedValue, {
+                    let formattedValue = e.target.value.replace(/\D/g, '')
+                    form.setValue(`flow_rate`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>BTU/lb/°F</span>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center'>
               <div className='flex flex-col justify-center'>
-                <h3 className='plabs-title-medium-16 text-greyscale-0'>Thermal Conductivity</h3>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Pressure</h3>
               </div>
               <div className='flex items-center gap-2'>
                 <Form.Input
-                  name={`thermal_conductivity`}
-                  placeholder='Thermal Conductivity'
+                  name={`pressure`}
+                  placeholder='Pressure'
                   className='w-full'
                   onChange={(e) => {
-                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
-
-                    if ((formattedValue.match(/\./g) || []).length > 1) {
-                      formattedValue = formattedValue.slice(0, -1)
-                    }
-
-                    form.setValue(`thermal_conductivity`, formattedValue, {
+                    let formattedValue = e.target.value.replace(/\D/g, '')
+                    form.setValue(`pressure`, formattedValue, {
                       shouldValidate: true,
                     })
                   }}
                 />
-                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>BTU/hr/ft/°F</span>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Cutting Dia</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`cutting_dia`}
+                  placeholder='Cutting Dia'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`cutting_dia`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>SG Cutting</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`sg_cutting`}
+                  placeholder='SG Cutting'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`sg_cutting`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>ROP ft/hr</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`rop_ft_hr`}
+                  placeholder='ROP ft/hr'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/\D/g, '')
+                    form.setValue(`rop_ft_hr`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>New Pressure Drop</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`new_pressure_drop`}
+                  placeholder='New Pressure Drop'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`new_pressure_drop`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>psi</span>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>Pressure Drop at Bit</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`pressure_drop_at_bit`}
+                  placeholder='Pressure Drop at Bit'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`pressure_drop_at_bit`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+                <span className='plabs-title-medium-16 text-greyscale-5 min-w-max'>psi</span>
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>cutting prod</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`cutting_prod`}
+                  placeholder='cutting prod'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`cutting_prod`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-2 items-center'>
+              <div className='flex flex-col justify-center'>
+                <h3 className='plabs-title-medium-16 text-greyscale-0'>AnnMW</h3>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Form.Input
+                  name={`ann_mw`}
+                  placeholder='AnnMW'
+                  className='w-full'
+                  onChange={(e) => {
+                    let formattedValue = e.target.value.replace(/[^0-9.]/g, '')
+                    if ((formattedValue.match(/\./g) || []).length > 1) {
+                      formattedValue = formattedValue.slice(0, -1)
+                    }
+                    form.setValue(`ann_mw`, formattedValue, {
+                      shouldValidate: true,
+                    })
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -291,9 +433,9 @@ export const FormFormation = () => {
           </div>
         </div>
       </Form>
-      <div className='card h-max pb-1 pl-2'>
+      {/* <div className='card h-max pb-1 pl-2'>
         <PumpFlowRateChart />
-      </div>
+      </div> */}
     </div>
   )
 }

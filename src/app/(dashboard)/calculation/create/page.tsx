@@ -16,12 +16,12 @@ export default function Page() {
 
   const menu = [
     { name: 'Description', params: 'description', icon: <Icons.DocumentIcon /> },
-    { name: 'Rig', params: 'rig', icon: <Icons.DraftingCompassIcon /> },
-    { name: 'Formation', params: 'formation', icon: <Icons.BoxGeoIcon /> },
+    { name: 'Input', params: 'input', icon: <Icons.DraftingCompassIcon /> },
+    { name: 'BHA', params: 'bha', icon: <Icons.BoxGeoIcon /> },
     { name: 'Survey', params: 'survey', icon: <Icons.BinocularsIcon /> },
-    { name: 'Geometry', params: 'geometry', icon: <Icons.BoxGeo2Icon /> },
-    { name: 'Fluid System', params: 'fluid-System', icon: <Icons.FluidIcon /> },
-    { name: 'Temperature', params: 'temperature', icon: <Icons.Thermometer /> },
+    { name: 'Pump Data', params: 'pump-data', icon: <Icons.BoxGeo2Icon /> },
+    { name: 'Breakdown', params: 'breakdown', icon: <Icons.FluidIcon /> },
+    { name: 'Grafik', params: 'grafik', icon: <Icons.Thermometer /> },
   ]
 
   return (
@@ -45,12 +45,12 @@ export default function Page() {
       </div>
       <div className='col-span-4'>
         {searchParams.get('tab') === 'description' && <FormDescription />}
-        {searchParams.get('tab') === 'rig' && <FormRig />}
-        {searchParams.get('tab') === 'formation' && <FormFormation />}
+        {searchParams.get('tab') === 'input' && <FormRig />}
+        {searchParams.get('tab') === 'bha' && <FormFormation />}
         {searchParams.get('tab') === 'survey' && <FormSurvey />}
-        {searchParams.get('tab') === 'geometry' && <FormGeometry />}
-        {searchParams.get('tab') === 'fluid-System' && <FormFluid />}
-        {searchParams.get('tab') === 'temperature' && <FormTemperature />}
+        {searchParams.get('tab') === 'pump-data' && <FormGeometry />}
+        {searchParams.get('tab') === 'breakdown' && <FormFluid />}
+        {searchParams.get('tab') === 'grafik' && <FormTemperature />}
       </div>
     </div>
   )

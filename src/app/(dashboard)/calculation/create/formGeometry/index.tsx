@@ -163,7 +163,7 @@ export const FormGeometry = () => {
           </div>
         </div>
       </Form>
-      <div className='space-y-4'>
+      {/* <div className='space-y-4'>
         <div className='card'>
           <Image
             src={`/e68b78a185063318d7635379573a2f9152721e3e.png`}
@@ -203,7 +203,7 @@ export const FormGeometry = () => {
             </table>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

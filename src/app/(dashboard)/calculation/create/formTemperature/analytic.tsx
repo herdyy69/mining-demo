@@ -5,15 +5,15 @@ import dynamic from 'next/dynamic'
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
-export const PumpFlowRateChart = () => {
+export const PumpFlowRateChart = ({ data }: { data: any[] }) => {
+  // Convert string values to numbers and handle comma as decimal separator
+  const cci = data.map((item) => parseFloat(item.cci.replace(',', '.')))
+  const lummLength = data.map((item) => parseFloat(item.lummLength.replace(',', '.')))
+
   const series = [
     {
-      name: 'Line A',
-      data: [0, 128, 256, 384, 512, 640, 768, 896, 1024],
-    },
-    {
-      name: 'Line B',
-      data: [0, 64, 128, 192, 256, 320, 384, 448, 512],
+      name: 'CCI vs Lumm Length',
+      data: lummLength,
     },
   ]
 
@@ -25,7 +25,7 @@ export const PumpFlowRateChart = () => {
       zoom: { enabled: false },
     },
     theme: { mode: 'dark' },
-    colors: ['#FF0000', '#0000FF'],
+    colors: ['#007bff'],
     dataLabels: { enabled: false },
     stroke: { curve: 'straight', width: 2 },
     grid: {
@@ -33,7 +33,8 @@ export const PumpFlowRateChart = () => {
       strokeDashArray: 6,
     },
     xaxis: {
-      categories: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+      categories: cci,
+      title: { text: 'CCI', style: { color: '#ccc' } },
       labels: {
         style: {
           colors: '#ccc',
@@ -42,9 +43,10 @@ export const PumpFlowRateChart = () => {
       position: 'top',
     },
     yaxis: {
-      min: 0,
-      max: 1024,
+      min: Math.min(...lummLength, 0),
+      max: Math.max(...lummLength, 0),
       tickAmount: 4,
+      title: { text: 'Lumm Length', style: { color: '#ccc' } },
       labels: {
         style: {
           colors: '#ccc',
